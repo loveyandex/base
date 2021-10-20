@@ -206,6 +206,13 @@ class Partner(models.Model):
         help='Format email address "Name <email@domain>"')
     phone = fields.Char()
     mobile = fields.Char()
+    
+    _sql_constraints = [
+        ('mobile_uniques', 'unique (mobile)', 'mobile number already exists!!!'),
+    ]
+    
+    
+    
     is_company = fields.Boolean(string='Is a Company', default=False,
         help="Check if the contact is a company, otherwise it is a person")
     industry_id = fields.Many2one('res.partner.industry', 'Industry')
